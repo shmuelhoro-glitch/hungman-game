@@ -4,11 +4,7 @@ level_1 = ["apple", "water", "house", "smile", "bread"]
 level_2 = ["python", "puzzle", "guitar", "castle", "planet"]
 level_3 = ["developer", "algorithm", "xylophone", "cryptography", "jazz"]
 
-NUM_CHANCE = 10
 
-left_try = 0
-
-checked_letters = []
 
 def print_welcome_screen():
      # 1. הודעת פתיחה מהצ'אט
@@ -56,11 +52,10 @@ def get_name_and_level():
             print("there is a problem. your answer have to or '1' or '2' or '3' " )
     return [user_name,user_level]
 
-
 def get_word(level):
     list_from_level = globals()[f"level_{level}"]
-    current_word = random.choice(list_from_level)
-    return current_word
+    random_word = random.choice(list_from_level)
+    return random_word
 
 def is_proper_input(char):
     pass
@@ -77,11 +72,20 @@ def check_for_over_game():
 def main_menu():
    print_welcome_screen()
    name_and_level = get_name_and_level()
-
+   start_game(name_and_level[1])
 
 
 
 def start_game():
+    current_word = get_word()
+    NUM_CHANCE = 10
+    left_try = 0
+    checked_letters = []
+
+
+def status_menu():
     pass
 
-print(get_word("1"))
+
+
+
