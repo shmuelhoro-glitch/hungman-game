@@ -58,30 +58,19 @@ def get_word(level):
     return random_word
 
 def is_proper_input(char)->bool:
-    if char.lower() >= "a" and char.lower()<= "z" and len(char) == 1:
-        return True
-    return False
+    pass #בדיקה האם התו הוא אות באנגלית
 
-def check_if_correct(char)->bool:
-    for i in split_word:
-        if i==char:
-            return True
-    return False
+def check_if_correct():
+    pass
 
-def add_correct_letter(char):
-    for i,c in enumerate(word_now):
-        if c == "_":
-            if char == trust_word[i]:
-                word_now[i] = char
+def add_correct_letter():
+    pass
 
 def show_current_mode():
     pass
 
 def check_for_over_game():
-    if trust_word == word_now:
-        return True
-    return False
-    
+    pass
 
 def main_menu():
     pass
@@ -96,48 +85,19 @@ def status_menu():
 print_welcome_screen()
 name_and_level = get_name_and_level()
 current_word = get_word(name_and_level[1])
-split_word = list(current_word)
-silhouette_word = "_"*len(split_word)
 
+split_word = current_word.split()
+silhouette_word = "_"*len(split_word)
 left_chance = 10
-print(f"you need guess this word: {silhouette_word} "
+print(f"you need guess this word: {silhouette_word}"
       f"you have {left_chance} chances ")
 
-
-
-
-trust_word = split_word
-fronted_word = "_"*len(list(trust_word))
-word_now = list(fronted_word)
-checked = []
-
-while left_chance > 0:
-    print(f"your status is: {"".join(word_now)}, you have {left_chance} chance,\n Checked {checked}  ")
+while True:
     user_try = input("please try find the charter: ")
     if not is_proper_input(user_try):
         print("this valid input. try again ")
         continue
-    if user_try in checked:
-        print("already checked!")
-        continue
-    if user_try not in checked:
-        checked.append(user_try)
-    if check_if_correct(user_try):
-        add_correct_letter(user_try)
-        print("good!")
-        print("".join(word_now))
-        win = check_for_over_game()
-        if win:
-            break
-        continue
-    else:
-        left_chance-=1
-        print("no. it mistake ")
-        continue
+    check_if_correct(user_try)
 
-
-if left_chance <=0:
-    print("oops you lose 🥲 ")
-
-elif win:
-    print("🎉🎉you win!!🎉🎉")
+    print(f"your status is: ")
+    
